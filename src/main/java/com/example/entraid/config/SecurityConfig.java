@@ -14,7 +14,7 @@ public class SecurityConfig {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
             .authorizeHttpRequests(authz -> authz
-                .requestMatchers("/", "/signup", "/signin", "/css/**", "/js/**", "/images/**").permitAll()
+                .requestMatchers("/", "/signup", "/signin", "/css/**", "/js/**", "/images/**", "/h2-console/**").permitAll()
                 .anyRequest().authenticated()
             )
             .oauth2Login(oauth2 -> oauth2
@@ -29,6 +29,13 @@ public class SecurityConfig {
                 .clearAuthentication(true)
                 .deleteCookies("JSESSIONID")
                 .permitAll()
+            )
+            // Allow H2 console access - disable CSRF and frame options for H2 console
+            .csrf(csrf -> csrf
+                .ignoringRequestMatchers("/h2-console/**")
+            )
+            .headers(headers -> headers
+                .frameOptions().sameOrigin() // Allow H2 console to be embedded in frames
             );
             
         return http.build();
