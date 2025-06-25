@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Microsoft Entra ID SSO</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8 text-center">
+                <!-- Logout Success Message -->
+                <div th:if="${param.logout}" class="alert alert-success" role="alert">
+                    <strong>Success!</strong> You have been logged out successfully.
+                </div>
+                
+                <h1 class="mb-4">Microsoft Entra ID SSO</h1>
+                <p class="lead mb-4">Simple Spring Boot application with Microsoft authentication</p>
+                
+                <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+                    <a href="/signup" class="btn btn-success btn-lg">Sign Up</a>
+                    <a href="/signin" class="btn btn-primary btn-lg">Sign In</a>
+                </div>
+                
+                <div class="mt-5">
+                    <h5>Features:</h5>
+                    <ul class="list-unstyled">
+                        <li>✅ Microsoft Entra ID OAuth2 Integration</li>
+                        <li>✅ Separate Sign Up and Sign In flows</li>
+                        <li>✅ Secure authentication</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
